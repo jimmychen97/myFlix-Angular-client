@@ -82,7 +82,7 @@ export class FetchApiDataService {
   }
 
   // Making the api call to get data on one user
-  getUser(): Observable<any> {
+  getUser(User: any): Observable<any> {
     const token = localStorage.getItem('token');
     const username = localStorage.getItem('user');
 
@@ -96,7 +96,7 @@ export class FetchApiDataService {
   }
 
   // Making the api call to get a user's favorite movies
-  getFavoriteMovie(): Observable<any> {
+  getFavoriteMovies(): Observable<any> {
     const token = localStorage.getItem('token');
     const username = localStorage.getItem('user');
 
