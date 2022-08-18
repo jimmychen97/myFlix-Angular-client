@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FetchApiDataService } from '../fetch-api-data.service';
 import { EditProfileComponent } from '../edit-profile/edit-profile.component';
+import { DirectorComponent } from '../director/director.component';
+import { GenreComponent } from '../genre/genre.component';
+import { SynopsisComponent } from '../synopsis/synopsis.component';
 
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -50,6 +53,65 @@ export class ProfileComponent implements OnInit {
   openEditProfileDialog(): void {
     this.dialog.open(EditProfileComponent, {
       width: '300px',
+    });
+  }
+
+  openSynopsisDialog(title: string, imagePath: any, description: string): void {
+    this.dialog.open(SynopsisComponent, {
+      data: {
+        Title: title,
+        ImagePath: imagePath,
+        Description: description,
+      },
+      width: '500px',
+      panelClass: 'synopsis-custom',
+    });
+  }
+
+  openDirectorDialog(
+    title: string,
+    name: string,
+    bio: string,
+    birth: string
+  ): void {
+    this.dialog.open(DirectorComponent, {
+      data: {
+        Title: title,
+        Name: name,
+        Bio: bio,
+        Birth: birth,
+      },
+      width: '500px',
+      panelClass: 'director-custom',
+    });
+  }
+
+  openGenreDialog(title: string, name: string, description: string): void {
+    this.dialog.open(GenreComponent, {
+      data: {
+        Title: title,
+        Name: name,
+        Description: description,
+      },
+      width: '500px',
+      panelClass: 'genre-custom',
+    });
+    console.log('Name: ' + name);
+  }
+
+  removeFavoriteMovies(MovieID: string, Title: string): void {
+    this.fetchApiData.removeFavoriteMovie(MovieID).subscribe((res: any) => {
+      this.snackBar.open(
+        `Successfully removed ${Title} from favorite movies.`,
+        'OK',
+        {
+          duration: 4000,
+          verticalPosition: 'top',
+        }
+      );
+      setTimeout(function () {
+        window.location.reload();
+      }, 4000);
     });
   }
 

@@ -1,0 +1,33 @@
+.user-profile-card {
+  margin-top: 50px;
+  display: flex;
+  padding: 30px;
+  width: 400px;
+  flex-direction: column;
+}
+
+.user-profile-page {
+}
+
+.user-profile-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+
+.favorite-movie {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background: #d3d3d3;
+  max-width: 280px;
+  width: 280px;
+  margin: 5px;
+  padding: 20px 3px;
+}
+
+.action-icons {
+  display: flex;
+}
