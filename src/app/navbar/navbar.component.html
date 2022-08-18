@@ -1,9 +1,16 @@
 <div class="nav-bar">
-    <button mat-button (click)="goToMovies()">Movies</button>
-    <span></span>
-    <button mat-button (click)="goToProfile()">Profile</button>
-    <span></span>
-    <button mat-button (click)="logOut()" class="logout-button">
-        <mat-icon>logout</mat-icon> Logout
+    <button mat-button (click)="goToMovies()" class="movie-button">
+        <mat-icon>movie</mat-icon> MyFlix
     </button>
+    <span></span>
+    <div class="right-buttons">
+        <button mat-button (click)="goToProfile()" class="profile-button">
+            <mat-icon>account_circle</mat-icon>Profile
+        </button>
+        <span></span>
+        <button mat-button (click)="logOut()" class="logout-button">
+            <mat-icon>exit_to_app</mat-icon>Logout
+        </button>
+    </div>
+
 </div>
