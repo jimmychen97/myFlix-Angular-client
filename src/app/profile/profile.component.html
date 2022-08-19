@@ -25,7 +25,7 @@
         <mat-card *ngFor="let movie of favMovies; let i = index" class="favorite-movie">
             <mat-card-title class="movies-title">{{movie.Title}}</mat-card-title>
             <img src={{movie.ImagePath}} alt={{movie.Title}} style="float: left;
-            width: 200px;
+            width: 350px;
             height: 300px;
             object-fit: cover;" />
             <div class="action-icons">
@@ -35,24 +35,24 @@
                     movie.Director.Bio,
                     movie.Director.Birth
                     )">
-                    <mat-icon>person_pin</mat-icon>
+                    <mat-icon>person_pin</mat-icon> Director
                 </button>
                 <button class="genre-button" mat-button color="grey" (click)="openGenreDialog(
                   movie.Title,
                   movie.Genre.Name,
                   movie.Genre.Description
                   )">
-                    <mat-icon> local_movies</mat-icon>
+                    <mat-icon> local_movies</mat-icon> Genre
                 </button>
                 <button class="synopsis-button" mat-button color="grey" (click)="openSynopsisDialog(
               movie.Title,
               movie.ImagePath,
               movie.Description
               )">
-                    <mat-icon> format_align_justify</mat-icon>
+                    <mat-icon> format_align_justify</mat-icon> Synopsis
                 </button>
-                <button mat-icon-button (click)="removeFavoriteMovies(movie._id, movie.Title)">
-                    <mat-icon>delete_outline</mat-icon>
+                <button mat-button color="grey" (click)="removeFavoriteMovies(movie._id, movie.Title)">
+                    <mat-icon>delete_outline</mat-icon> Remove
                 </button>
             </div>
         </mat-card>
