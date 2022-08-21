@@ -31,6 +31,11 @@ export class ProfileComponent implements OnInit {
     this.getUser();
   }
 
+  /**
+   * calls API end-piont to get the user's data
+   * @function getUser
+   * @returns user's data in json format
+   */
   getUser(): void {
     let movies: any[] = [];
     const user = localStorage.getItem('user');
@@ -50,12 +55,21 @@ export class ProfileComponent implements OnInit {
     }
   }
 
+  /**
+   * opens the UserEditComponent for a user to change their personal data
+   */
   openEditProfileDialog(): void {
     this.dialog.open(EditProfileComponent, {
       width: '300px',
     });
   }
 
+  /**
+   * opens the dialog to display the SynopsisComponent
+   * @param title {string}
+   * @param imagePath {any}
+   * @param description {string}
+   */
   openSynopsisDialog(title: string, imagePath: any, description: string): void {
     this.dialog.open(SynopsisComponent, {
       data: {
@@ -68,6 +82,13 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+  /**
+   * opens the dialog to display the DirectorComponent
+   * @param title {string}
+   * @param name {string}
+   * @param bio {string}
+   * @param birth {string}
+   */
   openDirectorDialog(
     title: string,
     name: string,
@@ -86,6 +107,12 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+  /**
+   * opens the dialog to display the GenreComponent
+   * @param title {string}
+   * @param name {string}
+   * @param description {string}
+   */
   openGenreDialog(title: string, name: string, description: string): void {
     this.dialog.open(GenreComponent, {
       data: {
@@ -99,6 +126,13 @@ export class ProfileComponent implements OnInit {
     console.log('Name: ' + name);
   }
 
+  /**
+   * use API end-point to remove a movie from user's favorites
+   * @function removeFavoriteMovies
+   * @param MovieID {string}
+   * @param Title {string}
+   * @returns updated user's data in json format
+   */
   removeFavoriteMovies(MovieID: string, Title: string): void {
     this.fetchApiData.removeFavoriteMovie(MovieID).subscribe((res: any) => {
       this.snackBar.open(
@@ -115,6 +149,11 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+  /**
+   * calls API end-point to remove a current logged in user from database
+   * @function deleteProfile
+   * @returns status for user has been removed
+   */
   deleteProfile(): void {
     if (
       confirm(

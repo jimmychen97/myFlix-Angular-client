@@ -21,10 +21,16 @@ export class EditProfileComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  /**
+   * updates the user's data in database
+   * displays a message for successfully updated profile, reloads the profile
+   * @function editUser
+   * @returns an user's updated data in json format
+   */
   editUser(): void {
     this.fetchApiData.editUser(this.userData).subscribe((result) => {
       this.dialogRef.close();
-      this.snackBar.open('Successfully updated profile!', 'OK', {
+      this.snackBar.open('Successfully updated profile', 'OK', {
         duration: 2000,
       });
 

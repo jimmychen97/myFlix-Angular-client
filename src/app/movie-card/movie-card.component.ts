@@ -26,6 +26,11 @@ export class MovieCardComponent {
     this.getFavoriteMovies();
   }
 
+  /**
+   * Gets all the movies using API service and populate local state variable
+   * @returns array of movies objects
+   * @function getMovies
+   */
   getMovies(): void {
     this.fetchApiData.getAllMovies().subscribe((resp: any) => {
       this.movies = resp;
@@ -34,6 +39,11 @@ export class MovieCardComponent {
     });
   }
 
+  /**
+   * Opens the genre dialog from GenreComponent
+   * @params name, description
+   * @function openGenreDialog
+   */
   openGenreDialog(name: string, description: string): void {
     this.dialog.open(GenreComponent, {
       data: {
@@ -45,6 +55,11 @@ export class MovieCardComponent {
     });
   }
 
+  /**
+   * Opens the genre dialog from DirectorComponent
+   * @params name, bio
+   * @function openDirectorDialog
+   */
   openDirectorDialog(name: string, bio: string): void {
     this.dialog.open(DirectorComponent, {
       data: {
@@ -56,6 +71,11 @@ export class MovieCardComponent {
     });
   }
 
+  /**
+   * Opens the genre dialog from SynopsisComponent
+   * @params title, description
+   * @function openSynopsisDialog
+   */
   openSynopsisDialog(title: string, description: string): void {
     this.dialog.open(SynopsisComponent, {
       data: {
@@ -67,6 +87,11 @@ export class MovieCardComponent {
     });
   }
 
+  /**
+   * Gets the list of user's favorite movies
+   * @function getFavoriteMovies
+   * @returns user's favorite movie list
+   */
   getFavoriteMovies(): void {
     this.fetchApiData.getFavoriteMovies().subscribe((resp: any) => {
       this.favoriteMovies = resp;
@@ -74,25 +99,26 @@ export class MovieCardComponent {
     });
   }
 
+  /**
+   * Checks if a movie is included in the user's list of favorite movies
+   * @param id
+   * @returns true if the movie is in the array
+   * @function isFav
+   */
   isFav(id: string): boolean {
     return this.favoriteMovies.includes(id);
   }
 
+  /**
+   * Add a movie to the list of favorite movies using API service
+   * @param id
+   * @function addToFavoriteMovies
+   */
   addToFavoriteMovies(id: string): void {
     this.fetchApiData.addFavoriteMovie(id).subscribe((result) => {
       this.ngOnInit();
 
       this.snackBar.open('Movie added to your favorite list', 'OK', {
-        duration: 2000,
-      });
-    });
-  }
-
-  removeFromFavoriteMovies(id: string): void {
-    this.fetchApiData.removeFavoriteMovie(id).subscribe((result) => {
-      this.ngOnInit();
-
-      this.snackBar.open('Movie removed from your favorite list', 'OK', {
         duration: 2000,
       });
     });
